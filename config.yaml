@@ -1,0 +1,48 @@
+io:
+  base_dir: "D:/lnc_project/Xinwei/1.0.4data/data/IQ_A"
+  # 新增：对应 BASE_DIR_2（B 路）
+  base_dir_2: "D:/lnc_project/Xinwei/1.0.4data/data/IQ_B"
+
+  scan_interval_sec: 300
+  only_current_hour: false
+  ignore_unfinished_hour_on_switch: true
+  process_image_bin_as: auto
+# 可选
+blocks:
+  start: 0
+  end: 650
+
+rows:
+  max: 1000
+
+
+minio:
+  endpoint: "http://127.0.0.1:9000"
+  access_key: "minioadmin"
+  secret_key: "minioadmin"
+  bucket: "my-bucket"
+  base_prefix: "prod"
+
+
+#kafka:
+#  bootstrap_servers: "kafka1:9092,kafka2:9092"
+#  acks: "all"              # ← 必须是 all
+#  linger_ms: 50
+#  retries: 5
+#  max_in_flight: 5
+#  compression_type: "lz4"
+
+
+topics:
+  similarity: das.similarity
+  graph:      das.images
+  peaks:      das.harmonics
+  alert:      das.alerts
+
+thresholds:
+  rp_final_min: 50.0
+  coh_med_min: 0.30
+  poc_peak_min: 0.20
+
+# 可选
+push_images: false
